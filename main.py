@@ -6,7 +6,7 @@ def name_processing(name_fun:str):
             print("Your name is too long")
         elif not name_fun.isalpha():
             print("Your name can only contain letters")
-        elif not name_fun[0].isupper() or name_fun[1:].islower():
+        elif not name_fun[0].isupper() or not name_fun[1:].islower():
             name_fun = name_fun[0].upper() + name_fun[1:].lower()
             break
         else:

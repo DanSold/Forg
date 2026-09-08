@@ -1,21 +1,28 @@
 def chek_length_type(length_chek_fun) -> float|bool:
     if length_chek_fun.isdigit():
         return float(length_chek_fun)
-    elif list(length_chek_fun)[1] == '.':
-        return float(length_chek_fun)
-    elif list(length_chek_fun)[1] == ',':
+    elif len(length_chek_fun) > 1 and list(length_chek_fun)[1] == '.':
+        try:
+            return float(length_chek_fun)
+        except ValueError:
+            print('Please enter a number for length.')
+            return False
+    elif len(length_chek_fun) > 1 and ',' in length_chek_fun:
         print('Please use "." for length.')
         return False
     else:
         print('Please enter a number for length.')
         return False
 
-
 def chek_width_type(width_chek_fun) -> float | bool:
     if width_chek_fun.isdigit():
         return float(width_chek_fun)
-    elif list(width_chek_fun)[1] == '.':
-        return float(width_chek_fun)
+    elif len(width_chek_fun) > 1 and list(width_chek_fun)[1] == '.':
+        try:
+            return float(width_chek_fun)
+        except ValueError:
+            print('Please enter a number for length.')
+            return False
     elif list(width_chek_fun)[1] == ',':
         print('Please use "." for width.')
         return False
@@ -26,8 +33,12 @@ def chek_width_type(width_chek_fun) -> float | bool:
 def chek_height_type(height_chek_fun) -> float | bool:
     if height_chek_fun.isdigit():
         return float(height_chek_fun)
-    elif list(height_chek_fun)[1] == '.':
-        return float(height_chek_fun)
+    elif len(height_chek_fun) > 1 and list(height_chek_fun)[1] == '.':
+        try:
+            return float(height_chek_fun)
+        except ValueError:
+            print('Please enter a number for length.')
+            return False
     elif list(height_chek_fun)[1] == ',':
         print('Please use "." for height.')
         return False
