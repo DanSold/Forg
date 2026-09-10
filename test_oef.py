@@ -1,16 +1,16 @@
-from oef2optimized import check_number
+from oef import name_processing, age_processing
 
-def test_integer():
-    assert check_number("10", "length") == 10.0
+def test_name_valid_already_formatted():
+    assert name_processing("Dan") == "Dan"
 
+def test_name_formatting_needed():
+    assert name_processing("dAN") == "Dan"
+    assert name_processing("DAN") == "Dan"
+    assert name_processing("dan") == "Dan"
 
-def test_float():
-    assert check_number("10.5", "length") == 10.5
-
-
-def test_comma():
-    assert check_number("10,5", "length") is False
-
-
-def test_text():
-    assert check_number("hello", "length") is False
+def test_name_too_short_then_valid(monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda _: "Anna")
+    result = name_processing("A")
+    assert result == "Anna"
+    captured = capsys.readouterr()
+    assert "Your name is too short" in captured.out
