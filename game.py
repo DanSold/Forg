@@ -61,7 +61,7 @@ while True:
     damage_key = f"damage{hero_hit}"
     damage = hero[name][damage_key]
 
-    enemy_move = randint(1, 5)
+    enemy_move = randint(0, 5)
 
     print(f'You chose: {hero_hit}')
     print(f'Enemy chose: {enemy_move}')
